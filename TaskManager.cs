@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace ConsoleApp26
 
         public void AddTask(string title)
         {
-            Trace.WriteLine("[TRACE] Начало операции AddTask.");
+            Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Начало операции AddTask.");
 
             _tasks.Add(new TaskItem(title));
 
@@ -19,12 +19,12 @@ namespace ConsoleApp26
 
             Trace.TraceInformation($"[INFO] Количество задач после добавления: {_tasks.Count}");
 
-            Trace.WriteLine("[TRACE] Конец операции AddTask.");
+            Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Конец операции AddTask.");
         }
 
         public void RemoveTask(string title)
         {
-            Trace.WriteLine("[TRACE] Начало операции RemoveTask.");
+            Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Начало операции RemoveTask.");
 
             var task = _tasks.FirstOrDefault(t =>
                 t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
@@ -33,7 +33,7 @@ namespace ConsoleApp26
             {
                 Trace.TraceError($"[ERROR] Задача \"{title}\" не найдена.");
 
-                Trace.WriteLine("[TRACE] Конец операции RemoveTask.");
+                Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Конец операции RemoveTask.");
                 return;
             }
 
@@ -43,24 +43,24 @@ namespace ConsoleApp26
 
             Trace.TraceInformation($"[INFO] Количество задач после удаления: {_tasks.Count}");
 
-            Trace.WriteLine("[TRACE] Конец операции RemoveTask.");
+            Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Конец операции RemoveTask.");
         }
 
         public void ListTasks()
         {
-            Trace.WriteLine("[TRACE] Начало операции ListTasks.");
+            Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Начало операции ListTasks.");
 
             if (_tasks.Count == 0)
             {
                 Trace.TraceInformation("[INFO] Список задач пуст.");
 
-                Trace.WriteLine("[TRACE] Конец операции ListTasks.");
+                Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Конец операции ListTasks.");
                 return;
             }
 
             Trace.TraceInformation($"[INFO] Всего задач: {_tasks.Count}");
 
-            Trace.WriteLine("[TRACE] Конец операции ListTasks.");
+            Trace.WriteLine($"[TRACE] {DateTime.Now:yyyy-MM-dd HH:mm:ss} Конец операции ListTasks.");
         }
     }
 }
